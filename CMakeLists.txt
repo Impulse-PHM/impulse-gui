@@ -19,6 +19,10 @@ target_link_libraries(impulse-gui
         Qt::Widgets
 )
 
+set_target_properties(impulse-gui PROPERTIES
+    OUTPUT_NAME "impulse-phm"
+)
+
 include(GNUInstallDirs)
 
 install(TARGETS impulse-gui
