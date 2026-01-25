@@ -1,0 +1,36 @@
+# The Database for End-Users / Application File Format
+*.impulse
+
+# SQLite Database Files
+*.db
+*.db3
+*.sqlite
+*.sqlite3
+
+# All user-specific files created by CMake and Qt Creator
+*.user*
+
+# CMake
+build/
+build-*/
+cmake-build-*/
+out/
+bin/
+lib/
+CMakeUserPresets.json
+
+# Qt Creator
+.qtcreator/
+.qtc_clangd/
+
+# JetBrains IDEs
+.idea/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Other
+.attach_pid*
