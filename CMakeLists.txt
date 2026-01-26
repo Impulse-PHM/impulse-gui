@@ -1,4 +1,10 @@
 cmake_minimum_required(VERSION 3.19)
+
+set(APP_NAME "Impulse PHM")
+set(APP_VERSION 0.1.0)
+set(APP_AUTHOR "Joshua Goring")
+set(APP_AUTHOR_EMAIL "qualitysoftwareguy@gmail.com")
+
 project(impulse-gui LANGUAGES CXX)
 
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
