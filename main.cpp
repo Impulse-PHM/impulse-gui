@@ -2,12 +2,14 @@
 
 #include <QApplication>
 
+#include "build_config.h"
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    // TODO: Use the values set in CMakeLists.txt (after making them useable) instead of hard-coding them here
-    QApplication::setApplicationName("Impulse PHM");
-    QApplication::setApplicationVersion("0.1.0");
+    QApplication::setApplicationName(APP_NAME);
+    QApplication::setApplicationDisplayName(APP_DISPLAY_NAME);
+    QApplication::setApplicationVersion(APP_VERSION);
 
     MainWindow main_window;
     main_window.show();
