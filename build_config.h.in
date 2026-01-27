@@ -1,0 +1,12 @@
+// Template header file used by CMake to generate the real config header
+
+#ifndef BUILD_CONFIG_H_IN
+#define BUILD_CONFIG_H_IN
+
+#define APP_NAME "@APP_NAME@"
+#define APP_DISPLAY_NAME "@APP_DISPLAY_NAME@"
+#define APP_VERSION "@APP_VERSION@"
+#define APP_AUTHOR "@APP_AUTHOR@"
+#define APP_AUTHOR_EMAIL "@APP_AUTHOR_EMAIL@"
+
+#endif // BUILD_CONFIG_H_IN
