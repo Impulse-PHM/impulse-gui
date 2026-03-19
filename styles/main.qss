@@ -1,0 +1,7 @@
+QLabel {
+    font-size: 14pt;
+}
+
+QPushButton {
+    font-size: 12pt;
+}
