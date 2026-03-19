@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NewUserDialog</class>
+ <widget class="QDialog" name="NewUserDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>505</width>
+    <height>385</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string/>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="createAccountLabel">
+     <property name="text">
+      <string>Impulse PHM - Create New User</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="firstNameLabel">
+       <property name="text">
+        <string>&amp;First Name:</string>
+       </property>
+       <property name="buddy">
+        <cstring>firstNameLineEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="firstNameLineEdit">
+       <property name="toolTip">
+        <string>Enter your first name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="lastNameLabel">
+       <property name="text">
+        <string>&amp;Last Name:</string>
+       </property>
+       <property name="buddy">
+        <cstring>lastNameLineEdit</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lastNameLineEdit">
+       <property name="toolTip">
+        <string>Enter your last name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="dateOfBirthLabel">
+       <property name="text">
+        <string>&amp;Date of Birth:</string>
+       </property>
+       <property name="buddy">
+        <cstring>birthMonthComboBox</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QComboBox" name="birthMonthComboBox">
+         <property name="toolTip">
+          <string>Select the month you were born</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="birthDayComboBox">
+         <property name="toolTip">
+          <string>Select the day you were born</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="birthYearComboBox">
+         <property name="toolTip">
+          <string>Select the year you were born</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="createAccountButtonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
