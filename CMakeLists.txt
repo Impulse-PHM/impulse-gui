@@ -46,6 +46,8 @@ qt_standard_project_setup()
 
 qt_add_executable(impulse-gui
     WIN32 MACOSX_BUNDLE
+    README.md
+    LICENSE
     src/main.cpp
     ${IMPULSE_CORE_BRIDGE_CC}
     src/mainwindow.h
