@@ -15,6 +15,9 @@
 namespace {
     // Determine whether to show the welcome dialog or not
     bool shouldWelcomeUser() {
+        // TODO: Delete
+        return true;
+
         try{
             if (!impulse_core::db_check_user_database_exists()) {
                 return true;
