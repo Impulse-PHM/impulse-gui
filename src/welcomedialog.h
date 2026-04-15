@@ -15,6 +15,9 @@ public:
     explicit WelcomeDialog(QWidget *parent = nullptr);
     ~WelcomeDialog();
 
+signals:
+    void mainWindowRequested();
+
 private:
     Ui::WelcomeDialog *ui;
     void setAllText();

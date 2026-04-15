@@ -20,7 +20,11 @@ WelcomeDialog::WelcomeDialog(QWidget *parent)
     connect(ui->newUserButton, &QPushButton::clicked, this, [this] {
         NewUserDialog newUserDialog(this);
         newUserDialog.setFixedSize(newUserDialog.size());
-        newUserDialog.exec();
+
+        if (newUserDialog.exec() == QDialog::Accepted) {
+            this->accept();
+            emit mainWindowRequested();
+        }
     });
 
     connect(ui->existingUserButton, &QPushButton::clicked, this, [this] {
@@ -34,8 +38,17 @@ WelcomeDialog::WelcomeDialog(QWidget *parent)
         if (!existingUserDatabase.isEmpty()) {
             qDebug() << "Importing existing user database: " << existingUserDatabase;
         }
+
+        bool databaseIsImported = false;
         try {
             impulse_core::db_import_user_database(existingUserDatabase.toStdString());
+
+            databaseIsImported = true;
+            util::notify::information(
+                this,
+                "Successful Import",
+                "The database was imported successfully!"
+                );
         }
         catch (const rust::Error& e) {
             util::notify::show_notification(
@@ -48,12 +61,11 @@ WelcomeDialog::WelcomeDialog(QWidget *parent)
                 "Failed to import the existing user database."
                 );
         }
-        util::notify::information(
-            this,
-            "Successful Import",
-            "The database was imported successfully!"
-        );
-        // TODO: Use a utility that closes the welcome dialog and opens the main window
+
+        if (databaseIsImported) {
+            this->accept();
+            emit mainWindowRequested();
+        }
     });
 }
 

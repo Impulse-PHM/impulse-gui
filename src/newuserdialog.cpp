@@ -146,8 +146,6 @@ void NewUserDialog::addConnections() {
 
             if (user_is_saved) {
                 this->accept();
-                // TODO: Close the welcome dialog
-                // TODO: Open the main window
             }
 
         }

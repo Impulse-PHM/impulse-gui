@@ -15,9 +15,6 @@
 namespace {
     // Determine whether to show the welcome dialog or not
     bool shouldWelcomeUser() {
-        // TODO: Delete
-        return true;
-
         try{
             if (!impulse_core::db_check_user_database_exists()) {
                 return true;
@@ -64,11 +61,16 @@ int main(int argc, char *argv[])
     app.setStyleSheet(getMainStyleSheet());
 
     MainWindow mainWindow;
+    WelcomeDialog welcomeDialog(nullptr);
 
     impulse_core::initialize();
 
+    // Global Signals and Slot Connections
+    QObject::connect(&welcomeDialog, &WelcomeDialog::mainWindowRequested, [&]() {
+        mainWindow.showMaximized();
+    });
+
     if (shouldWelcomeUser()) {
-        WelcomeDialog welcomeDialog(nullptr);
         welcomeDialog.setFixedSize(welcomeDialog.size());
 
         // Blocking is okay here as user input is required before showing the main window
