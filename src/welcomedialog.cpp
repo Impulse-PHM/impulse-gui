@@ -1,6 +1,11 @@
+#include <QFileDialog>
+
 #include "welcomedialog.h"
 #include "ui_welcomedialog.h"
 #include "newuserdialog.h"
+#include "rust/cxx.h"
+#include "impulse-core/src/bridge.rs.h"
+#include "util/notification.h"
 
 
 WelcomeDialog::WelcomeDialog(QWidget *parent)
@@ -15,7 +20,52 @@ WelcomeDialog::WelcomeDialog(QWidget *parent)
     connect(ui->newUserButton, &QPushButton::clicked, this, [this] {
         NewUserDialog newUserDialog(this);
         newUserDialog.setFixedSize(newUserDialog.size());
-        newUserDialog.exec();
+
+        if (newUserDialog.exec() == QDialog::Accepted) {
+            this->accept();
+            emit mainWindowRequested();
+        }
+    });
+
+    connect(ui->existingUserButton, &QPushButton::clicked, this, [this] {
+        QString existingUserDatabase = QFileDialog::getOpenFileName(
+            this,
+            "Open User Database",
+            QString(), // Let the operating system decide which directory to default to
+            "Impulse PHM Files (*.impulse)"
+        );
+
+        if (!existingUserDatabase.isEmpty()) {
+            qDebug() << "Importing existing user database: " << existingUserDatabase;
+        }
+
+        bool databaseIsImported = false;
+        try {
+            impulse_core::db_import_user_database(existingUserDatabase.toStdString());
+
+            databaseIsImported = true;
+            util::notify::information(
+                this,
+                "Successful Import",
+                "The database was imported successfully!"
+                );
+        }
+        catch (const rust::Error& e) {
+            util::notify::show_notification(
+                this,
+                QMessageBox::Critical,
+                "Import Failed",
+                "",
+                QMessageBox::Ok,
+                QMessageBox::Ok,
+                "Failed to import the existing user database."
+                );
+        }
+
+        if (databaseIsImported) {
+            this->accept();
+            emit mainWindowRequested();
+        }
     });
 }
 
