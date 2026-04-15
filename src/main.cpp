@@ -16,7 +16,7 @@ namespace {
     // Determine whether to show the welcome dialog or not
     bool shouldWelcomeUser() {
         try{
-            if (!impulse_core::db_check_user_database_exists()) {
+            if (!impulse_core::resource_check_user_database_exists()) {
                 return true;
             }
             else {
