@@ -41,7 +41,7 @@ WelcomeDialog::WelcomeDialog(QWidget *parent)
 
         bool databaseIsImported = false;
         try {
-            impulse_core::db_import_user_database(existingUserDatabase.toStdString());
+            impulse_core::resource_import_user_database(existingUserDatabase.toStdString());
 
             databaseIsImported = true;
             util::notify::information(
