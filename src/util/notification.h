@@ -20,7 +20,7 @@ namespace util::notify {
     void critical(QWidget* parent, const QString& title, const QString& message);
 
     /// Show a custom notification
-    QMessageBox::StandardButton show_notification(
+    QMessageBox::StandardButton showNotification(
         QWidget* parent,
         QMessageBox::Icon icon,
         const QString& title,

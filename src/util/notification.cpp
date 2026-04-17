@@ -7,18 +7,18 @@
 
 namespace util::notify {
     void information(QWidget* parent, const QString& title, const QString& message) {
-        show_notification(parent, QMessageBox::Information, title, message);
+        showNotification(parent, QMessageBox::Information, title, message);
     }
 
     void warning(QWidget* parent, const QString& title, const QString& message) {
-        show_notification(parent, QMessageBox::Warning, title, message);
+        showNotification(parent, QMessageBox::Warning, title, message);
     }
 
     void critical(QWidget* parent, const QString& title, const QString& message) {
-        show_notification(parent, QMessageBox::Critical, title, message);
+        showNotification(parent, QMessageBox::Critical, title, message);
     }
 
-    QMessageBox::StandardButton show_notification(
+    QMessageBox::StandardButton showNotification(
         QWidget* parent,
         QMessageBox::Icon icon,
         const QString& title,

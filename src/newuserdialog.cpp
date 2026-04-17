@@ -133,7 +133,7 @@ void NewUserDialog::addConnections() {
                     );
             }
             catch (const rust::Error& e) {
-                util::notify::show_notification(
+                util::notify::showNotification(
                     this,
                     QMessageBox::Critical,
                     "Validation Failed",
@@ -150,7 +150,7 @@ void NewUserDialog::addConnections() {
 
         }
         else {
-            util::notify::show_notification(
+            util::notify::showNotification(
                 this,
                 QMessageBox::Critical,
                 "Validation Failed",
