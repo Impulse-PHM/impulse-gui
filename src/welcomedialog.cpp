@@ -51,7 +51,7 @@ WelcomeDialog::WelcomeDialog(QWidget *parent)
                 );
         }
         catch (const rust::Error& e) {
-            util::notify::show_notification(
+            util::notify::showNotification(
                 this,
                 QMessageBox::Critical,
                 "Import Failed",
