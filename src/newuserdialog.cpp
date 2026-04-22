@@ -81,6 +81,8 @@ void NewUserDialog::addConnections() {
     connect(this->ui->createAccountButtonBox, &QDialogButtonBox::accepted, this, [this] {
         QString informativeErrorMessage = "";
 
+        bool is_primary = true;
+
         QString first_name = this->ui->firstNameLineEdit->text().trimmed();
         if (first_name.isEmpty()) {
             informativeErrorMessage.append("Please enter your first name.");
@@ -117,7 +119,8 @@ void NewUserDialog::addConnections() {
                 last_name.toStdString(),
                 birthMonth,
                 birthDay,
-                birthYear
+                birthYear,
+                is_primary
             );
 
             bool user_is_saved = false;
