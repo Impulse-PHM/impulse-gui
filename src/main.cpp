@@ -17,12 +17,33 @@ namespace {
     bool shouldWelcomeUser() {
         try{
             if (!impulse_core::resource_check_user_database_exists()) {
+                qDebug() << "Did not find an existing user database, so welcome the user";
                 return true;
             }
             else {
-                // TODO: Need to add an additional if condition/check that a primary user exists in
-                // the user DB.
-                return false;
+                qDebug() << "An existing user database was found, but additional checks required.";
+                try {
+                    auto primary_user = impulse_core::user_get_primary_user();
+
+                    // The SQL query was successful
+                    if (impulse_core::user_optional_user_is_some(primary_user)) {
+                        qDebug() << "A primary user was found, so do not welcome the user";
+                        return false;
+                    }
+                    else {
+                        qDebug() << "No primary user was found, so welcome the user.";
+                        return true;
+                    }
+                }
+                catch (const rust::Error& e) {
+                    QString getPrimaryUserFailedMessage = (
+                        "Failed to get the primary user and cannot continue: "
+                        );
+                    getPrimaryUserFailedMessage.append(e.what());
+                    qCritical().noquote() << getPrimaryUserFailedMessage;
+                    util::notify::critical(nullptr, "Setup Failed", getPrimaryUserFailedMessage);
+                    std::abort();
+                }
             }
         }
         catch (const rust::Error& e) {
